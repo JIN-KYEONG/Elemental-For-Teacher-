@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>엘리멘탈 교사용 지도서</title>
+    <style>
+        @media print {
+            .no-print { display: none; }
+            body { margin: 0; padding: 20px; }
+        }
+        
+        body {
+            font-family: 'Malgun Gothic', sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 30px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #4facfe 75%, #00f2fe 100%);
+            line-height: 1.8;
+        }
+        
+        .guide {
+            background: white;
+            padding: 40px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+            border-radius: 20px;
+        }
+        
+        .header {
+            text-align: center;
+            border-bottom: 4px solid transparent;
+            border-image: linear-gradient(90deg, #28a745 0%, #20c997 50%, #17a2b8 100%);
+            border-image-slice: 1;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .header h1 {
+            background: linear-gradient(135deg, #28a745 0%, #20c997 50%, #17a2b8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-size: 32px;
+            margin: 10px 0;
+            font-weight: bold;
+        }
+        
+        .elements-bar {
+            display: flex;
+            justify-content: space-around;
+            margin: 20px 0;
+            padding: 15px;
+            background: linear-gradient(90deg, 
+                rgba(255,107,107,0.2) 0%, 
+                rgba(78,205,196,0.2) 33%, 
+                rgba(149,225,211,0.2) 66%, 
+                rgba(218,165,32,0.2) 100%);
+            border-radius: 10px;
+        }
+        
+        .element-badge {
+            font-size: 20px;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+        }
+        
+        .fire { background: linear-gradient(135deg, #ff6b6b, #ee5a6f); color: white; }
+        .water { background: linear-gradient(135deg, #4ecdc4, #45b7d1); color: white; }
+        .air { background: linear-gradient(135deg, #95e1d3, #a8e6cf); color: #333; }
+        .earth { background: linear-gradient(135deg, #daa520, #cd853f); color: white; }
+        
+        .intro-box {
+            background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+            border-left: 5px solid #28a745;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 10px;
+        }
+        
+        .section {
+            margin: 35px 0;
+            page-break-inside: avoid;
+        }
+        
+        .section-title {
+            background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 12px;
+            font-size: 19px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 15px rgba(40, 167, 69, 0.3);
+        }
+        
+        .activity {
+            margin: 25px 0;
+            padding: 25px;
+            background: #f8f9fa;
+            border-radius: 12px;
+            border-left: 5px solid #28a745;
+        }
+        
+        .activity-title {
+            font-weight: bold;
+            font-size: 20px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            padding: 12px 20px;
+            border-radius: 10px;
+            color: white;
+        }
+        
+        .activity-title.fire-theme {
+            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 100%);
+        }
+        
+        .activity-title.water-theme {
+            background: linear-gradient(135deg, #4ecdc4 0%, #45b7d1 100%);
+        }
+        
+        .activity-title.air-theme {
+            background: linear-gradient(135deg, #a8e6cf 0%, #95e1d3 100%);
+            color: #2d3436;
+        }
+        
+        .activity-title.earth-theme {
+            background: linear-gradient(135deg, #daa520 0%, #cd853f 100%);
+        }
+        
+        .activity-title.love-theme {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+        
+        .activity-title.rainbow-theme {
+            background: linear-gradient(90deg, #ff6b6b 0%, #4ecdc4 25%, #95e1d3 50%, #daa520 75%, #f093fb 100%);
+        }
+        
+        .activity-title .emoji {
+            font-size: 24px;
+            margin-right: 10px;
+        }
+        
+        .tip-box {
+            background: linear-gradient(135deg, #fff3cd 0%, #ffeaa7 100%);
+            border-left: 5px solid #ffc107;
+            padding: 18px;
+            margin: 15px 0;
+            border-radius: 8px;
+        }
+        
+        .tip-box strong {
+            color: #856404;
+            font-size: 16px;
+        }
+        
+        .answer-box {
+            background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+            border-left: 5px solid #2196f3;
+            padding: 18px;
+            margin: 15px 0;
+            border-radius: 8px;
+        }
+        
+        .answer-box strong {
+            color: #1565c0;
+            font-size: 16px;
+        }
+        
+        .warning-box {
+            background: linear-gradient(135deg, #ffebee 0%, #ffcdd2 100%);
+            border-left: 5px solid #e53e3e;
+            padding: 18px;
+            margin: 15px 0;
+            border-radius: 8px;
+        }
+        
+        .warning-box strong {
+            color: #e53e3e;
+            font-size: 16px;
+        }
+        
+        .time-box {
+            background: linear-gradient(135deg, #f3e5f5 0%, #e1bee7 100%);
+            padding: 12px 18px;
+            border-radius: 8px;
+            display: inline-block;
+            margin: 10px 0;
+            font-weight: bold;
+            color: #7b1fa2;
+            border: 2px solid #ab47bc;
+        }
+        
+        .step {
+            margin: 12px 0;
+            padding-left: 30px;
+            position: relative;
+            line-height: 1.8;
+        }
+        
+        .step::before {
+            content: "▶";
+            position: absolute;
+            left: 0;
+            color: #28a745;
+            font-weight: bold;
+            font-size: 14px;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        
+        th, td {
+            border: 2px solid #dfe6e9;
+            padding: 15px;
+            text-align: left;
+        }
+        
+        th {
+            background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+            color: white;
+            font-weight: bold;
+        }
+        
+        .print-btn {
+            background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 25px;
+            font-size: 16px;
+            cursor: pointer;
+            margin: 20px auto;
+            display: block;
+            box-shadow: 0 4px 15px rgba(40, 167, 69, 0.4);
+        }
+        
+        .print-btn:hover {
+            background: linear-gradient(135deg, #20c997 0%, #28a745 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(40, 167, 69, 0.5);
+        }
+        
+        .key-point {
+            background: #ffeaa7;
+            padding: 3px 8px;
+            border-radius: 3px;
+            font-weight: bold;
+        }
+        
+        ul {
+            line-height: 2;
+        }
+        
+        .question-example {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 10px 0;
+            border: 2px dashed #28a745;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 3px solid transparent;
+            border-image: linear-gradient(90deg, #28a745 0%, #20c997 50%, #17a2b8 100%);
+            border-image-slice: 1;
+        }
+    </style>
+</head>
+<body>
+    <button class="print-btn no-print" onclick="window.print()">📄 지도서 인쇄하기</button>
+    
+    <div class="guide">
+        <div class="header">
+            <div style="font-size: 48px; margin: 15px 0;">📚👨‍🏫</div>
+            <h1>영화 '엘리멘탈' 교사용 지도서</h1>
+            <p style="color: #666; font-size: 18px;">학습지 활용 가이드 및 예시 답안</p>
+            
+            <div class="elements-bar">
+                <span class="element-badge fire">🔥 불</span>
+                <span class="element-badge water">💧 물</span>
+                <span class="element-badge air">💨 공기</span>
+                <span class="element-badge earth">🌱 흙</span>
+            </div>
+        </div>
+        
+        <div class="intro-box">
+            <h3 style="margin-top: 0;">🎯 수업 개요</h3>
+            <p><strong>대상:</strong> 전공과 전문직업과</p>
+            <p><strong>핵심 주제:</strong> 다양성 존중, 편견 극복, 공존의 방법</p>
+            <p><strong>학습 목표:</strong></p>
+            <ul style="margin: 10px 0;">
+                <li>편견과 차별의 의미를 이해하고 극복 방법 생각하기</li>
+                <li>서로 다른 존재가 공존하는 방법 논의하기</li>
+            </ul>
+        </div>
+
+        <!-- 수업 진행 팁 -->
+        <div class="section">
+            <div class="section-title">💡 전체 수업 진행 팁</div>
+            
+            <div class="tip-box">
+                <strong>🎬 영화 관람 전</strong>
+                <ul>
+                    <li>학생들에게 영화의 기본 설정 설명 (불, 물, 공기, 흙의 4가지 원소가 사는 도시)</li>
+                    <li>"서로 다른 친구와 친해진 경험" 간단히 나누기</li>
+                    <li>"관람 중 가장 기억에 남는 장면 찾기" 미션 제시</li>
+                    <li>주인공 엠버(불)와 웨이드(물)의 캐릭터 소개</li>
+                </ul>
+            </div>
+            
+            <div class="tip-box">
+                <strong>🎬 영화 관람 중</strong>
+                <ul>
+                    <li>필요시 중간에 1-2회 일시정지하여 이해도 확인</li>
+                    <li>추천 정지 시점: ① 엠버와 웨이드가 처음 만났을 때, ② 엠버가 유리를 만드는 장면</li>
+                    <li>중요 장면에서 "지금 어떤 기분일까?" 질문하며 공감 유도</li>
+                </ul>
+            </div>
+                        
+            <div class="warning-box">
+                <strong>⚠️ 주의사항</strong>
+                <ul style="margin: 10px 0;">
+                    <li>학생의 가정환경이 다양할 수 있으므로 가족 관련 질문 시 <span class="key-point">민감하게 접근</span></li>
+                    <li>차별 경험을 물을 때는 안전한 환경에서 <span class="key-point">자발적으로만 공유</span>하도록 유도</li>
+                    <li>학생이 부정적 감정을 표현할 때 공감하고 긍정적으로 전환 도와주기</li>
+                    <li>활동 6(감사 편지)에서 가족이 없는 학생은 선생님, 친구 등 자유롭게 선택 가능</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 활동별 지도 가이드 -->
+        <div class="section">
+            <div class="section-title">📖 활동별 지도 가이드 및 예시 답안</div>
+            
+            <!-- 활동 1 -->
+            <div class="activity">
+                <div class="activity-title fire-theme">
+                    <span class="emoji">📖</span>
+                    활동 1. 이야기 구조 파악하기
+                </div>
+                
+                <div class="time-box">⏰ 소요 시간: 15-20분</div>
+                
+                <div class="tip-box">
+                    <strong>💡 지도 팁</strong>
+                    <div class="step">영화 줄거리를 <span class="key-point">한 문장으로 요약</span>하는 연습</div>
+                    <div class="step">"누가, 어디서, 무엇을 했나요?" 질문으로 구체화 유도</div>
+                    <div class="step">시작-중간-끝의 개념을 "처음에는-그다음에는-마지막에는"으로 쉽게 설명</div>
+                    <div class="step">한 문장이라도 괜찮다는 것을 강조하여 부담 줄이기</div>
+                    <div class="step">학생들이 작성 후 <span class="key-point">발표하는 시간</span>을 가져 말하기 연습</div>
+                    <div class="step">친구들의 답변을 듣고 박수치며 격려하는 분위기 조성</div>
+                </div>
+                
+                <div class="answer-box">
+                    <strong>📌 예시 답안</strong>
+                    <div class="question-example">
+                        <strong>🌅 시작:</strong> 엠버는 아버지의 가게를 물려받으려고 했는데 웨이드를 만났어요.
+                    </div>
+                    <div class="question-example">
+                        <strong>⚡ 중간:</strong> 엠버와 웨이드는 서로 다르지만 친구가 되었고, 엠버는 유리 만드는 재능을 발견했어요.
+                    </div>
+                    <div class="question-example">
+                        <strong>🌟 끝:</strong> 엠버는 자신의 꿈을 찾았고 웨이드와 함께 행복해졌어요.
+                    </div>
+                </div>
+                
+                <div class="tip-box">
+                    <strong>🗣️ 발표 유도 질문</strong>
+                    <div class="question-example">
+                        "여러분이 쓴 문장을 친구들에게 읽어볼까요?"<br>
+                        "어느 부분이 가장 기억에 남았나요?"<br>
+                        "친구의 답과 내 답이 어떻게 다른가요?"
+                    </div>
+                </div>
+            </div>
+
+            <!-- 활동 2 -->
+            <div class="activity">
+                <div class="activity-title water-theme">
+                    <span class="emoji">👀</span>
+                    활동 2. 첫인상 단어로 표현하기
+                </div>
+                
+                <div class="time-box">⏰ 소요 시간: 10분</div>
+                
+                <div class="tip-box">
+                    <strong>💡 지도 팁</strong>
+                    <div class="step">30개의 단어 보기를 먼저 함께 읽어보며 <span class="key-point">단어의 뜻 확인</span></div>
+                    <div class="step">"엠버를 처음 봤을 때 어떤 느낌이었어요?" 질문하며 생각 유도</div>
+                    <div class="step">영화 보기 전 첫인상은 외모, 말투, 행동 등에서 받은 느낌</div>
+                    <div class="step">영화 본 후는 캐릭터를 <span class="key-point">깊이 알게 된 후의 생각</span></div>
+                    <div class="step">같은 단어를 써도 괜찮고, 완전히 다른 단어를 써도 좋다고 강조</div>
+                    <div class="step">변화를 비교하며 <span class="key-point">"왜 생각이 바뀌었을까?"</span> 토론</div>
+                </div>
+                
+                <div class="answer-box">
+                    <strong>📌 예시 답안</strong>
+                    <div class="question-example">
+                        <strong>🔥 엠버</strong><br>
+                        • 영화 보기 전: 뜨거운, 무섭다, 화난<br>
+                        • 영화 본 후: 강한, 따뜻한, 착한, 특별한
+                    </div>
+                    <div class="question-example">
+                        <strong>💧 웨이드</strong><br>
+                        • 영화 보기 전: 차가운, 약한, 우는<br>
+                        • 영화 본 후: 친절한, 따뜻한, 재미있는, 용감한
+                    </div>
+                </div>
+                
+                <div class="answer-box">
+                    <strong>📌 마지막 질문 예시 답안</strong>
+                    <div class="question-example">
+                        "처음에는 엠버가 무섭고 화난 것 같았는데, 영화를 보니까 가족을 사랑하고 착한 마음을 가진 친구였어요. 웨이드도 약해 보였는데 사실은 용감하고 친절했어요."
+                    </div>
+                </div>
+                
+                <div class="warning-box">
+                    <strong>⚠️ 교육적 포인트</strong>
+                    <p style="margin: 10px 0;">이 활동의 핵심은 <span class="key-point">"첫인상과 실제는 다를 수 있다"</span>는 것을 깨닫는 것입니다. 겉모습이나 짧은 만남으로 사람을 판단하는 편견에 대해 자연스럽게 배울 수 있습니다.</p>
+                </div>
+            </div>
+
+            <!-- 활동 3 -->
+            <div class="activity">
+                <div class="activity-title air-theme">
+                    <span class="emoji">💭</span>
+                    활동 3. 갈등 분석하기
+                </div>
+                
+                <div class="time-box">⏰ 소요 시간: 20-25분</div>
+                
+                <div class="tip-box">
+                    <strong>💡 지도 팁</strong>
+                    <div class="step">실제로 물과 불이 만나면 어떻게 되는지 <span class="key-point">과학적 현상 간단히 설명</span></div>
+                    <div class="step">하지만 영화에서는 "다르다"는 것 자체가 아니라 <span class="key-point">"편견"</span>이 문제였음을 강조</div>
+                    <div class="step">부모님의 걱정도 이해하면서, 왜 그런 걱정을 하셨을지 <span class="key-point">양쪽 입장 모두 생각</span>해보기</div>
+                    <div class="step">편견, 차별, 선입견 등의 개념을 영화 내용과 연결하여 설명</div>
+                </div>
+                
+                <div class="answer-box">
+                    <strong>📌 예시 답안</strong>
+                    <div class="question-example">
+                        <strong>1) 물과 불이 만나면 안 된다고 생각한 이유:</strong>
+                        <ul>
+                            <li>물과 불은 성질이 너무 달라서 함께하면 위험하다고 생각했어요</li>
+                            <li>예전부터 그렇게 해왔고, 서로 다른 원소끼리는 어울리지 않는다는 편견이 있었어요</li>
+                            <li>서로를 잘 모르니까 두려웠던 것 같아요</li>
+                            <li>과거에 나쁜 일을 겪어서 모든 다른 원소를 나쁘게 생각했어요</li>
+                            <li>겉모습만 보고 판단했어요</li>
+                        </ul>
+                    </div>
+                    <div class="question-example">
+                        <strong>2) 엠버의 아버지가 반대한 이유:</strong>
+                        <ul>
+                            <li>딸이 다칠까 봐 걱정했어요</li>
+                            <li>다른 나라에서 왔을 때 차별을 받았던 경험 때문에 다른 원소들을 믿지 못했어요</li>
+                            <li>가족이 대대로 해온 가게를 엠버가 이어받길 바랐는데, 웨이드가 엠버의 마음을 다른 곳으로 이끌까 봐 걱정했어요</li>
+                            <li>딸을 사랑하지만 자신의 방식만 옳다고 생각했어요</li>
+                            <li>과거의 아픈 기억 때문에 새로운 것을 받아들이기 어려웠어요</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="tip-box">
+                    <strong>🗣️ 확장 토론 질문</strong>
+                    <div class="question-example">
+                        "여러분은 다른 친구를 처음 만났을 때 어떤 느낌이었나요?"<br>
+                        "겉모습만 보고 판단했다가 나중에 생각이 바뀐 경험이 있나요?"<br>
+                        "나와 다른 사람을 어떻게 이해할 수 있을까요?"
+                    </div>
+                </div>
+            </div>
+
+            <!-- 활동 4 -->
+            <div class="activity">
+                <div class="activity-title earth-theme">
+                    <span class="emoji">✨</span>
+                    활동 4. 나의 장점 찾기
+                </div>
+                
+                <div class="time-box">⏰ 소요 시간: 20-25분</div>
+                
+                <div class="tip-box">
+                    <strong>💡 지도 팁</strong>
+                    <div class="step">학생이 자신의 장점을 찾기 어려워하면 <span class="key-point">교사가 먼저 관찰한 장점 1-2가지 말해주기</span></div>
+                    <div class="step">"잘하는 것"뿐 아니라 "좋아하는 것", "친구들이 칭찬한 것"도 장점이 될 수 있음을 알려주기</div>
+                    <div class="step">친구들과 서로의 장점 찾아주는 활동으로 확장 가능</div>
+                    <div class="step">구체적인 예시를 함께 쓰도록 도와주면 <span class="key-point">자존감 향상</span>에 효과적</div>
+                    <div class="step">엠버가 유리 만드는 재능을 발견한 것처럼, 모두에게 <span class="key-point">특별한 재능</span>이 있다고 격려</div>
+                </div>
+                
+                <div class="answer-box">
+                    <strong>📌 예시 답안</strong>
+                    <table>
+                        <tr>
+                            <th style="width: 35%;">나의 장점</th>
+                            <th>구체적인 예시</th>
+                        </tr>
+                        <tr>
+                            <td>친구를 잘 도와줘요</td>
+                            <td>친구가 숙제를 못 해서 힘들어하면 같이 해결해요. 지난주에 ○○이가 청소를 못 끝냈을 때 같이 도와줬어요.</td>
+                        </tr>
+                        <tr>
+                            <td>그림 그리기를 좋아해요</td>
+                            <td>미술 시간에 선생님이 칭찬해주셨어요. 학교 포스터 그리기 대회에서 상을 받았어요.</td>
+                        </tr>
+                        <tr>
+                            <td>웃음이 많아요</td>
+                            <td>친구들이 제 웃음을 보면 기분이 좋아진대요. 선생님이 제 웃음 때문에 하루가 행복하다고 하셨어요.</td>
+                        </tr>
+                    </table>
+                </div>
+                
+                <div class="warning-box">
+                    <strong>⚠️ 주의사항</strong>
+                    <p style="margin: 10px 0;">학생이 장점을 전혀 찾지 못한다면 <span class="key-point">자존감이 낮은 상태</span>일 수 있습니다. 개별 상담이나 긍정적 피드백을 지속적으로 제공해주세요. "선생님 눈에는 이런 점이 멋져 보여"라고 구체적으로 말해주세요.</p>
+                </div>
+                
+                <div class="tip-box">
+                    <strong>🌟 추가 활동 아이디어</strong>
+                    <ul>
+                        <li><span class="key-point">친구 칭찬 릴레이</span>: 돌아가며 옆 친구의 장점 한 가지씩 말하기</li>
+                        <li><span class="key-point">장점 카드 만들기</span>: 자신의 장점을 그림으로 표현하기</li>
+                        <li><span class="key-point">꿈 연결하기</span>: 내 장점으로 미래에 무엇을 할 수 있을지 상상하기</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 활동 5 -->
+            <div class="activity">
+                <div class="activity-title love-theme">
+                    <span class="emoji">🌍</span>
+                    활동 5. 함께 사는 세상 만들기
+                </div>
+                
+                <div class="time-box">⏰ 소요 시간: 20-25분</div>
+                
+                <div class="tip-box">
+                    <strong>💡 지도 팁</strong>
+                    <div class="step">추상적이지 않고 <span class="key-point">구체적이고 실천 가능한</span> 방법 생각하도록 유도</div>
+                    <div class="step">"우리 반에서", "오늘부터", "내가 할 수 있는" 것에 초점</div>
+                    <div class="step">학생들의 아이디어를 칠판에 적으며 <span class="key-point">브레인스토밍</span></div>
+                    <div class="step">반 전체가 함께 실천할 규칙 만들기로 확장 가능</div>
+                    <div class="step">"언제 실천할까?" 칸을 통해 <span class="key-point">실천 의지</span> 구체화</div>
+                    <div class="step">1주일 후 실천 여부를 확인하는 시간을 가져 <span class="key-point">지속성 유지</span></div>
+                </div>
+                
+                <div class="answer-box">
+                    <strong>📌 예시 답안</strong>
+                    <table>
+                        <tr>
+                            <th style="width: 15%;">순서</th>
+                            <th>실천 방법</th>
+                            <th style="width: 25%;">언제 실천할까?</th>
+                        </tr>
+                        <tr>
+                            <td style="text-align: center;"><strong>첫째</strong></td>
+                            <td>처음 보는 친구에게 먼저 다가가서 인사하고 이름 물어보기</td>
+                            <td>내일부터 매일</td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: center;"><strong>둘째</strong></td>
+                            <td>친구가 나와 다르게 행동해도 비웃지 않고 "왜 그렇게 했어?"라고 물어보기</td>
+                            <td>항상</td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: center;"><strong>셋째</strong></td>
+                            <td>혼자 있는 친구에게 다가가서 "같이 놀래?"라고 말하기</td>
+                            <td>쉬는 시간마다</td>
+                        </tr>
+                    </table>
+                </div>
+                                
+                <div class="warning-box">
+                    <strong>⚠️ 교육적 포인트</strong>
+                    <p style="margin: 10px 0;">이 활동은 <span class="key-point">지식을 행동으로 연결</span>하는 중요한 단계입니다. 영화에서 배운 공존의 가치를 실제 생활에 적용하도록 돕습니다. 실천이 어렵더라도 시도 자체를 격려해주세요.</p>
+                </div>
+            </div>
+
+            <!-- 활동 6 -->
+            <div class="activity">
+                <div class="activity-title rainbow-theme">
+                    <span class="emoji">💌</span>
+                    활동 6. 감사 편지 쓰기
+                </div>
+                
+                <div class="time-box">⏰ 소요 시간: 25-30분</div>
+                
+                <div class="tip-box">
+                    <strong>💡 지도 팁</strong>
+                    <div class="step">편지 쓰기 전 "누구에게 고마운 마음이 드나요?" <span class="key-point">브레인스토밍</span></div>
+                    <div class="step">부모님, 친구, 선생님, 형제자매 등 <span class="key-point">자유롭게 선택</span> 가능 (가족이 없는 학생 배려)</div>
+                    <div class="step">학습지에 제공된 <span class="key-point">예시 편지</span>를 함께 읽으며 구조 파악</div>
+                    <div class="step">편지 구조 안내: ① 인사 → ② 감사 이유 → ③ 앞으로의 다짐</div>
+                    <div class="step">쓰기가 어려운 학생은 <span class="key-point">그림편지</span>나 구두 작성 후 교사 대필</div>
+                    <div class="step">실제로 편지를 전달하도록 격려 (직접, 이메일, 메시지 등)</div>
+                </div>
+                
+                <div class="answer-box">
+                    <strong>📌 예시 답안 (다양한 버전)</strong>
+                    <div class="question-example">
+                        <strong>예시 1 - 부모님께</strong><br><br>
+                        <strong>To. 엄마</strong><br><br>
+                        
+                        안녕하세요, 엄마!<br><br>
+                        
+                        영화를 보면서 엄마 생각이 많이 났어요. 엄마는 항상 제가 하고 싶은 일을 할 수 있도록 응원해주셨어요. 덕분에 저는 자신감이 생겼어요.<br><br>
+                        
+                        앞으로는 엄마를 더 많이 사랑하는 딸이 될게요. 엄마, 사랑해요!<br><br>
+                        
+                        <strong>From. ○○○</strong>
+                    </div>
+                    
+                    <div class="question-example">
+                        <strong>예시 2 - 친구에게</strong><br><br>
+                        <strong>To. 친구 △△에게</strong><br><br>
+                        
+                        안녕, △△아!<br><br>
+                        
+                        너는 내가 힘들 때 항상 옆에 있어줘서 고마워. 내가 실수해도 비웃지 않고 괜찮다고 말해줬어. 너는 정말 좋은 친구야.<br><br>
+                        
+                        앞으로 나도 네가 힘들 때 옆에 있어줄게. 우리 계속 친하게 지내자!<br><br>
+                        
+                        <strong>From. ○○○</strong>
+                    </div>
+                    
+                    <div class="question-example">
+                        <strong>예시 3 - 선생님께</strong><br><br>
+                        <strong>To. ◇◇ 선생님</strong><br><br>
+                        
+                        선생님, 안녕하세요!<br><br>
+                        
+                        선생님은 제가 틀려도 화내지 않고 다시 도전하라고 말씀해주셨어요. 덕분에 저는 포기하지 않는 법을 배웠어요.<br><br>
+                        
+                        앞으로 더 열심히 공부해서 선생님을 자랑스럽게 만들고 싶어요. 감사합니다!<br><br>
+                        
+                        <strong>From. ○○○</strong>
+                    </div>
+                </div>
+                                
+                <div class="warning-box">
+                    <strong>⚠️ 주의사항</strong>
+                    <p style="margin: 10px 0;">학생 별로 가정배경을 고려하여 부모님 외에 <span class="key-point">다른 대상을 선택할 수 있도록</span> 배려해주세요. "가족이 아니어도 괜찮아요. 여러분을 응원해주는 누구에게나 쓸 수 있어요"라고 안내합니다.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 참고 자료 -->
+        <div class="section">
+            <div class="section-title">📚 교사 참고 자료</div>
+            
+            <div class="intro-box">
+                <h4 style="margin-top: 0;">💡 영화의 교육적 메시지</h4>
+                <ul>
+                    <li><strong>다양성과 포용:</strong> 서로 다른 존재도 이해하고 함께 살아갈 수 있다</li>
+                    <li><strong>편견 극복:</strong> 첫인상과 선입견을 넘어 진짜 모습을 보는 것의 중요성</li>
+                    <li><strong>정체성 찾기:</strong> 가족의 기대와 자신의 꿈 사이에서 균형 찾기</li>
+                    <li><strong>희생과 사랑:</strong> 부모님의 헌신과 자녀에 대한 사랑 이해하기</li>
+                    <li><strong>공존의 지혜:</strong> 차이를 인정하고 함께 성장하는 방법</li>
+                </ul>
+            </div>
+            
+            <div class="tip-box">
+                <strong>🎭 주요 캐릭터 분석</strong>
+                <ul>
+                    <li><strong>엠버(불 원소):</strong> 가족에 대한 책임감, 숨겨진 재능, 감정 조절의 어려움 → 자기 발견</li>
+                    <li><strong>웨이드(물 원소):</strong> 감수성, 공감 능력, 겉보기와 다른 용기 → 진정한 강함</li>
+                    <li><strong>엠버의 아버지:</strong> 이민자로서의 아픔, 딸에 대한 사랑, 변화 수용의 어려움 → 이해와 수용</li>
+                </ul>
+            </div>
+            
+            <div class="warning-box">
+                <strong>⚠️ 주의 깊게 다룰 주제</strong>
+                <ul style="margin: 10px 0;">
+                    <li><strong>가족 갈등:</strong> 가정환경이 어려운 학생 배려</li>
+                    <li><strong>꿈과 현실:</strong> 모든 꿈이 이루어지지 않을 수 있다는 현실도 함께 다루기</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer">
+            <div style="font-size: 40px; margin-bottom: 15px;">🔥💧💨🌱</div>
+            <p style="font-size: 18px; font-weight: bold; color: #28a745;">
+                모든 학생이 특별한 존재입니다
+            </p>
+            <p style="font-size: 14px; color: #666; margin-top: 10px;">
+                이 수업이 학생들의 성장에 도움이 되기를 바랍니다 ⭐
+            </p>
+        </div>
+    </div>
+</body>
+</html>
